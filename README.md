@@ -81,7 +81,7 @@ Recurrent neural networks (RNNs) and temporal convolutional networks (TCNs), are
 
 <!--- Deep Xi utilising the MHANet (**Deep Xi-MHANet**) was proposed in . --->
 
-Deep Xi utilising a ResNet TCN (**Deep Xi-ResNet**) was proposed in [[2]](https://ieeexplore.ieee.org/document/9066933). It uses bottleneck residual blocks and a cyclic dilation rate. The network comprises of approximately 2 million parameters and has a contextual field of approximately 8 seconds. An example of Deep Xi-ResNet is shown in **Figure 4**. **A trained model for version `resnet-1.0c` is available in the [`model`](https://github.com/anicolson/DeepXi/tree/master/model) directory. It is trained using the [Deep Xi Training Set](https://ieee-dataport.org/open-access/deep-xi-training-set).**
+Deep Xi utilising a ResNet TCN (**Deep Xi-TCN**) was proposed in [[2]](https://ieeexplore.ieee.org/document/9066933). It uses bottleneck residual blocks and a cyclic dilation rate. The network comprises of approximately 2 million parameters and has a contextual field of approximately 8 seconds. An example of Deep Xi-ResNet is shown in **Figure 4**. **A trained model for version `resnet-1.0c` is available in the [`model`](https://github.com/anicolson/DeepXi/tree/master/model) directory. It is trained using the [Deep Xi Training Set](https://ieee-dataport.org/open-access/deep-xi-training-set).**
 
 Deep Xi utilising a ResLSTM network (**Deep Xi-ResLSTM**) was proposed in [[1]](https://doi.org/10.1016/j.specom.2019.06.002). Each of its residual blocks contain a single LSTM cell. The network comprises of approximately 10 million parameters.
 
@@ -93,7 +93,7 @@ Deep Xi Versions
 -----
 There are multiple Deep Xi versions, comprising of different networks and restrictions. An example of the `ver` naming convention is `resnet-1.0c`. The network type is given at the start of `ver`. Versions with **c** are **causal**. Versions with **n** are **non-causal**.  The version iteration is also given, i.e. `1.0`. Here are the current versions:
 
-**`resnet-1.0c` (available in the [`model`](https://github.com/anicolson/DeepXi/tree/master/model) directory)**
+**`tcn:resnet-1.0c` (available in the [`model`](https://github.com/anicolson/DeepXi/tree/master/model) directory)**
 ```
 d_model=256
 n_blocks=40
@@ -105,7 +105,7 @@ mbatch_size=8
 causal=1
 ```
 
-**`resnet-1.0n` (technically, this is not a TCN due to the use of non-causal dilated 1D kernels)**
+**`tcn:resnet-1.0n` (technically, this is not a TCN due to the use of non-causal dilated 1D kernels)**
 ```
 d_model=256
 n_blocks=40
@@ -138,12 +138,12 @@ Average objective scores obtained over the conditions in the [Deep Xi Test Set](
 
 | Method           | Gain      | Causal | MOS-LQO | PESQ | STOI | eSTOI |
 |------------------|-----------|--------|---------|------|------|-------|
-| Deep Xi-ResNet (resnet-1.0c) | MMSE-STSA | Yes    |   1.90|2.34|80.92|65.90|
-| Deep Xi-ResNet (resnet-1.0c) | MMSE-LSA  | Yes    |   1.92|2.37|80.79|65.77|
-| Deep Xi-ResNet (resnet-1.0c) | SRWF/IRM  | Yes    |   1.87|2.31|80.98|65.94|
-| Deep Xi-ResNet (resnet-1.0c) | cWF       | Yes    |   1.92|2.34|81.11|65.79|
-| Deep Xi-ResNet (resnet-1.0c) | WF        | Yes    |   1.75|2.21|78.30|63.96|
-| Deep Xi-ResNet (resnet-1.0c) | IBM       | Yes    |   1.38|1.73|70.85|55.95|
+| Deep Xi-TCN (resnet-1.0c) | MMSE-STSA | Yes    |   1.90|2.34|80.92|65.90|
+| Deep Xi-TCN (resnet-1.0c) | MMSE-LSA  | Yes    |   1.92|2.37|80.79|65.77|
+| Deep Xi-TCN (resnet-1.0c) | SRWF/IRM  | Yes    |   1.87|2.31|80.98|65.94|
+| Deep Xi-TCN (resnet-1.0c) | cWF       | Yes    |   1.92|2.34|81.11|65.79|
+| Deep Xi-TCN (resnet-1.0c) | WF        | Yes    |   1.75|2.21|78.30|63.96|
+| Deep Xi-TCN (resnet-1.0c) | IBM       | Yes    |   1.38|1.73|70.85|55.95|
 
 Results for the DEMAND -- Voice Bank test set
 -----
@@ -158,8 +158,8 @@ Objective scores obtained on the DEMAND--Voicebank test set described [here](htt
 | [MMSE-GAN](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8462068)                 | No     | 3.80 | 3.12 | 3.14 | 2.53 | 93      |
 | [Deep Feature Loss](https://arxiv.org/pdf/1806.10522.pdf)          | Yes    | 3.86 | 3.33 | 3.22 | --   | --        |
 | [Metric-GAN](https://arxiv.org/pdf/1905.04874.pdf)                 | No     | 3.99 | 3.18 | 3.42 | 2.86 | --        |
-| **Deep Xi-ResNet (1.0c, causal) MMSE-LSA** | Yes    | 4.14 | 3.32 | 3.46 | 2.77 | 93 (93.2) |
-| **Deep Xi-ResNet (1.0n, non-causal) MMSE-LSA** | No    | **4.28** | **3.46** | **3.64** | **2.95** | **94 (93.6)** |
+| **Deep Xi-TCN (1.0c, causal) MMSE-LSA** | Yes    | 4.14 | 3.32 | 3.46 | 2.77 | 93 (93.2) |
+| **Deep Xi-TCN (1.0n, non-causal) MMSE-LSA** | No    | **4.28** | **3.46** | **3.64** | **2.95** | **94 (93.6)** |
 
 Installation
 -----
@@ -213,7 +213,7 @@ Citation guide
 -----
 Please cite the following depending on what you are using:
 * If using Deep Xi-ResLSTM, please cite [1].
-* If using Deep Xi-ResNet, please cite [1] and [2].
+* If using Deep Xi-TCN, please cite [1] and [2].
 * If using DeepMMSE, please cite [2].
 
 [1] [A. Nicolson, K. K. Paliwal, Deep learning for minimum mean-square error approaches to speech enhancement, Speech Communication 111 (2019) 44 - 55, https://doi.org/10.1016/j.specom.2019.06.002.](https://doi.org/10.1016/j.specom.2019.06.002)
