@@ -138,12 +138,12 @@ Average objective scores obtained over the conditions in the [Deep Xi Test Set](
 
 | Method           | Gain      | Causal | MOS-LQO | PESQ | STOI | eSTOI |
 |------------------|-----------|--------|---------|------|------|-------|
-| Deep Xi-TCN (resnet-1.0c) | MMSE-STSA | Yes    |   1.90|2.34|80.92|65.90|
-| Deep Xi-TCN (resnet-1.0c) | MMSE-LSA  | Yes    |   1.92|2.37|80.79|65.77|
-| Deep Xi-TCN (resnet-1.0c) | SRWF/IRM  | Yes    |   1.87|2.31|80.98|65.94|
-| Deep Xi-TCN (resnet-1.0c) | cWF       | Yes    |   1.92|2.34|81.11|65.79|
-| Deep Xi-TCN (resnet-1.0c) | WF        | Yes    |   1.75|2.21|78.30|63.96|
-| Deep Xi-TCN (resnet-1.0c) | IBM       | Yes    |   1.38|1.73|70.85|55.95|
+| Deep Xi-ResNet (resnet-1.0c) | MMSE-STSA | Yes    |   1.90|2.34|80.92|65.90|
+| Deep Xi-ResNet (resnet-1.0c) | MMSE-LSA  | Yes    |   1.92|2.37|80.79|65.77|
+| Deep Xi-ResNet (resnet-1.0c) | SRWF/IRM  | Yes    |   1.87|2.31|80.98|65.94|
+| Deep Xi-ResNet (resnet-1.0c) | cWF       | Yes    |   1.92|2.34|81.11|65.79|
+| Deep Xi-ResNet (resnet-1.0c) | WF        | Yes    |   1.75|2.21|78.30|63.96|
+| Deep Xi-ResNet (resnet-1.0c) | IBM       | Yes    |   1.38|1.73|70.85|55.95|
 
 Results for the DEMAND -- Voice Bank test set
 -----
@@ -158,8 +158,8 @@ Objective scores obtained on the DEMAND--Voicebank test set described [here](htt
 | [MMSE-GAN](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8462068)                 | No     | 3.80 | 3.12 | 3.14 | 2.53 | 93      |
 | [Deep Feature Loss](https://arxiv.org/pdf/1806.10522.pdf)          | Yes    | 3.86 | 3.33 | 3.22 | --   | --        |
 | [Metric-GAN](https://arxiv.org/pdf/1905.04874.pdf)                 | No     | 3.99 | 3.18 | 3.42 | 2.86 | --        |
-| **Deep Xi-TCN (1.0c, causal) MMSE-LSA** | Yes    | 4.14 | 3.32 | 3.46 | 2.77 | 93 (93.2) |
-| **Deep Xi-TCN (1.0n, non-causal) MMSE-LSA** | No    | **4.28** | **3.46** | **3.64** | **2.95** | **94 (93.6)** |
+| **Deep Xi-ResNet (1.0c, causal) MMSE-LSA** | Yes    | 4.14 | 3.32 | 3.46 | 2.77 | 93 (93.2) |
+| **Deep Xi-ResNet (1.0n, non-causal) MMSE-LSA** | No    | **4.28** | **3.46** | **3.64** | **2.95** | **94 (93.6)** |
 
 Installation
 -----
